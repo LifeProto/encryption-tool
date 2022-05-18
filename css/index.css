@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  background-image: linear-gradient(
+    140deg,
+    rgba(111, 111, 222, 0.4) 0%,
+    rgba(248, 57, 163, 0.4) 50%,
+    rgba(51, 183, 240, 0.4) 75%
+  );
+}
+
+.text-primary {
+  color: rgba(111, 111, 222, 0.8);
+}
+
+button {
+  outline: none;
+}
+
+#app {
+  font-family: 'DM Mono', 'Microsoft Yahei';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.icon {
+  display: inline-block;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1:hover .icon {
+  animation: rotate 0.5s 0.5s ease-in-out;
+}
+
+.translator {
+  background-color: rgba(255, 255, 255, .8);
+  width: 90vw;
+  height: 90vh;
+  border: 1px solid #efefef;
+  padding: 24px;
+  border-radius: 5px;
+}
+
+.translator * {
+  transition: 0.5s ease-in-out;
+  box-sizing: border-box;
+}
+
+.toolbar {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 0;
+}
+
+.toolbar button {
+  margin-left: -1px;
+  border-radius: 0;
+}
+
+button:hover .icon {
+  animation: rotate 0.5s 0.5s ease-in-out;
+}
+
+.toolbar button:nth-child(1) {
+  border-radius: 4px 0 0 4px;
+}
+.toolbar button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+button {
+  border: 1px solid rgba(111, 111, 222, 0.7);
+  background: rgba(111, 111, 222, 0.8);
+  color: white;
+  padding: 0 1.2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 5px;
+}
+
+button.active {
+  background: rgba(111, 111, 222, 1);
+}
+
+.inputs {
+  display: flex;
+}
+
+.inputs .inputBox {
+  flex: 1;
+  margin: 0 12px;
+}
+
+.inputBox {
+  border: 2px solid #efefef;
+  height: 40vh;
+  outline: none;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.inputBox.preview {
+  border-style: dashed;
+}
+
+.inputBox.active {
+  border-color: #aaaaff;
+}
+
+.inputBox:focus {
+  border-color: #aaaaff;
+}
+
+.inputBox-actionGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputBox-actionGroup > * {
+  margin: 4px 0;
+}
+
+.history {
+  height: 20vh;
+  overflow-y: scroll;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 1em;
+  border-radius: 5px;
+  font-size: 12px;
+  color: grey;
+}
+
+.history .item {
+  padding: .4em 0;
+  border-bottom: 1px dashed #efefef;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
