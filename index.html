@@ -10,26 +10,20 @@
   <body>
     <div id="app">
       <div class="translator">
-        <h1 class="text-primary">
-          小翻译官儿
-          <span class="icon">🦜</span>
-        </h1>
+        <h1 class="text-primary">翻译官<span class="icon">🦜</span></h1>
         <div class="glass">
           <div class="toolbar">
-            <button class="active"><span class="icon">🐱</span>猫言猫语</button>
-            <button><span class="icon">🐕</span>狗言狗语</button>
-            <button><span class="icon">🦆</span>鸡同鸭讲</button>
-            <button>Base64</button>
-            <button>MD5</button>
-            <button>SH01</button>
+            <button class="active"><span class="icon">🐱</span>动物语 ↓</button>
+            <button>常用加密<span class="icon">🔒</span></button>
           </div>
           <main>
             <div class="inputs">
               <textarea
-                placeholder="说点什么吧"
+                placeholder="写点什么试试✍"
                 class="inputBox active"
               ></textarea>
               <div class="inputBox-actionGroup">
+                <div title="一些描述">❓</div>
                 <div>➡️</div>
                 <div>⬅️</div>
               </div>
@@ -39,7 +33,7 @@
               ></textarea>
             </div>
             <div>
-              <h4>记录📷</h4>
+              <h4>历史📋</h4>
               <div class="history">
                 <div class="item">Hello</div>
                 <div class="item">“一点也不。”我心想。</div>
@@ -50,7 +44,9 @@
         </div>
       </div>
     </div>
-
+    <script src="js/module.js"></script>
+    <script src="js/encrypt/mao.js"></script>
+    <script src="js/encrypt/index.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
