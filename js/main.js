@@ -1,15 +1,22 @@
-define("_", ["encrypt"], (encoder) => {
+define("_", ["utils", "encrypt"], ({ useState }, encoders) => {
   const sourceMenu = (menus, onClick) => {
-    console.log("groups", menus);
-    const fragment = document.createElement('div');
-
+    const fragment = document.createElement("div");
     const elStr = menus
       .map((i) => {
         return `<div>
                   <h5>${i.groupName}</h5>
                   <ul>
                     ${i.items
-                      .map(({ meta }) => "<li>" + meta.name + "</li>")
+                      .map(
+                        ({ meta }) =>
+                          '<li data-group="' +
+                          i.groupName +
+                          '" data-name="' +
+                          meta.name +
+                          '">' +
+                          meta.name +
+                          "</li>"
+                      )
                       .join("")}
                   </ul>
                 </div>`;
@@ -19,14 +26,17 @@ define("_", ["encrypt"], (encoder) => {
 
     fragment.querySelectorAll("li").forEach((el) =>
       el.addEventListener("click", (e) => {
-        onClick(e);
+        const enc = menus
+          ?.find((i) => i.groupName === el.dataset.group)
+          ?.items.find((i) => i.meta.name === el.dataset.name);
+        onClick(enc);
       })
     );
 
     return fragment;
   };
 
-  encoder.forEach((e) => {
+  encoders.forEach((e) => {
     const { meta } = e;
     console.group("a encryption is loaded...");
     console.group("e.name:", meta.name);
@@ -34,13 +44,17 @@ define("_", ["encrypt"], (encoder) => {
     console.groupEnd();
   });
 
-  // to render
+  // state
+  let curEncoder = useState(null, (oldVal, newVal) => {
+    if (newVal == oldVal) return;
+    document.querySelector("#sourceSelector").innerHTML = `${newVal.meta.name}`;
+  });
 
-  const menuHash = encoder.reduce((acc, i) => {
+  // to render
+  const menuHash = encoders.reduce((acc, i) => {
     acc[i.groupName ?? "未分组"] = [...(acc[i.groupName ?? "未分组"] ?? []), i];
     return acc;
   }, {});
-  console.log("hash", menuHash);
   const menus = Object.entries(menuHash).map(([key, v]) => ({
     groupName: key,
     items: v,
@@ -48,5 +62,5 @@ define("_", ["encrypt"], (encoder) => {
 
   document
     .getElementById("sourceMenu")
-    .append(sourceMenu(menus, (e) => alert(e)));
+    .append(sourceMenu(menus, (e) => (curEncoder.value = e)));
 });
