@@ -13,8 +13,17 @@
         <h1 class="text-primary">翻译官<span class="icon">🦜</span></h1>
         <div class="glass">
           <div class="toolbar">
-            <button class="active"><span class="icon">🐱</span>动物语 ↓</button>
-            <button>常用加密<span class="icon">🔒</span></button>
+            <div class="sourceSelector">
+              <button id="sourceSelector" class="active">
+                <span class="icon">🐱</span>动物语 ↓
+              </button>
+              <div id="sourceMenu"></div>
+            </div>
+            <div class="toolbar-tipIcon">
+              <div>➡</div>
+              <div>➡</div>
+            </div>
+            <button id="targetName">猫猫猫语猫猫语猫语</button>
           </div>
           <main>
             <div class="inputs">
@@ -24,8 +33,8 @@
               ></textarea>
               <div class="inputBox-actionGroup">
                 <div title="一些描述">❓</div>
-                <div>➡️</div>
-                <div>⬅️</div>
+                <div></div>
+                <div></div>
               </div>
               <textarea
                 placeholder="会被转成鸟语哦~"
