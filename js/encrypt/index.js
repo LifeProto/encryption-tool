@@ -1,6 +1,7 @@
-define("encrypt", ["encrypt.mao", "encrypt.doubleKnife"], (
+define("encrypt", ["encrypt.mao", "encrypt.doubleKnife", "encrypt.Zen"], (
   mao,
-  doubleKnife
+  doubleKnife,
+  Zen
 ) => {
-  return [mao, doubleKnife];
+  return [mao, doubleKnife, Zen];
 });
