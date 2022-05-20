@@ -1,4 +1,4 @@
-define("_", ["utils", "encrypt"], ({ useState }, encoders) => {
+define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
   const sourceMenu = (menus, onClick) => {
     const fragment = document.createElement("div");
     const elStr = menus
@@ -47,7 +47,25 @@ define("_", ["utils", "encrypt"], ({ useState }, encoders) => {
   // state
   let curEncoder = useState(null, (oldVal, newVal) => {
     if (newVal == oldVal) return;
-    document.querySelector("#sourceSelector").innerHTML = `${newVal.meta.name}`;
+
+    // update attributes
+    const els = Array.from(document.querySelectorAll('#sourceMenu li'))
+    if (oldVal) {
+      els.find(i => i.dataset.name === oldVal.meta.name).setAttribute('class', '')
+    }
+    els.find(i => i.dataset.name === newVal.meta.name).setAttribute('class', 'active')
+
+
+
+    // update text
+    document.querySelector("#sourceSelector").innerHTML = `${
+      newVal.meta.emoji
+        ? '<span class="icon">' + newVal.meta.emoji + "</span>"
+        : ""
+    }${newVal.meta.name}`;
+    document.querySelector("#sourceFrom").innerHTML = `${newVal.meta.from}`;
+    document.querySelector("#sourceTo").innerHTML = `${newVal.meta.to}`;
+    document.querySelector('#tips').innerHTML = newVal.meta.describe;
   });
 
   // to render
@@ -63,4 +81,19 @@ define("_", ["utils", "encrypt"], ({ useState }, encoders) => {
   document
     .getElementById("sourceMenu")
     .append(sourceMenu(menus, (e) => (curEncoder.value = e)));
+
+  const inputFromEl = document.getElementById("inputFrom");
+  const inputToEl = document.getElementById("inputTo");
+  
+  bindInput(inputFromEl, e => {
+    console.log('a', e.target.value)
+    inputToEl.value = curEncoder.value.transform(e.target.value)
+  })
+  bindInput(inputToEl, e => {
+    inputFromEl.value = curEncoder.value.transformBack(e.target.value)
+  })
+
+  // set default encoder
+  curEncoder.value = encoders[0]
+ 
 });

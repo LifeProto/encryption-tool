@@ -43,7 +43,13 @@ ul {
 }
 
 .sourceSelector {
+  margin-left: -120px;
+  font-size: 0;
   position: relative;
+}
+
+.sourceSelector > * {
+  margin-left: 0;
 }
 
 .sourceSelector:hover #sourceMenu {
@@ -80,6 +86,7 @@ ul {
 }
 
 h5 {
+  font-size: 14px;
   margin: .5em 0;
   position: relative;
   color: grey; 
