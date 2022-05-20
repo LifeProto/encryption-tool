@@ -81,7 +81,7 @@ ul {
 
 #sourceMenu li {
   cursor: pointer;
-  padding: .4rem 1rem;
+  padding: 0.4rem 1rem;
 }
 
 #sourceMenu li:hover {
@@ -260,6 +260,20 @@ button.active {
 .history .item {
   padding: 0.4em 0;
   border-bottom: 1px dashed #efefef;
+  max-height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history .item p {
+  font-size: 12px;
+  background-color: #efefef;
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+}
+
+.history .item .title {
+  background-color: inherit;
 }
 
 @keyframes rotate {

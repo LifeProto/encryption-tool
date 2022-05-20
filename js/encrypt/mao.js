@@ -46,7 +46,7 @@ define("encrypt.mao", [], () => {
   };
 
   const meta = {
-    group: '动物语',
+    group: "动物语",
     name: "猫言猫语",
     from: "人话",
     to: "猫语",

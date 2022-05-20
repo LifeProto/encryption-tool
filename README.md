@@ -5,9 +5,12 @@
 你可以在 `js/encrypt` 文件夹自定义你的加密算法, 流程如下：
 
 1. 创建文件，实现如下接口:
-``` javascript
-define('your module name', [/* your dependencies */], () => {
-	const meta = {
+
+```javascript
+define("your module name", [
+  /* your dependencies */
+], () => {
+  const meta = {
     name: "算法名",
     from: "from",
     to: "to",
@@ -24,22 +27,24 @@ define('your module name', [/* your dependencies */], () => {
     transform,
     transformBack,
   };
-})
+});
 ```
+
 2. 在 `js/encrpyt/index.js` 中添加对你模块的引用：
-``` javascript
-define("encrypt", ["encrypt.mao", "encrypt.doubleKnife", /* yourModuleName */], (
+
+```javascript
+define("encrypt", ["encrypt.mao", "encrypt.doubleKnife" /* yourModuleName */], (
   mao,
   doubleKnife,
   yourModuleName
 ) => {
   return [mao, doubleKnife, yourModuleName];
 });
-
 ```
 
 3. 在 `index.html` 中引入你的脚本：
-``` html
+
+```html
 <script src="js/utils.js"></script>
 <!-- to insert here -->
 <script src="js/encrypt/mao.js"></script>

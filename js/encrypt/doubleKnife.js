@@ -141,7 +141,7 @@ define("encrypt.doubleKnife", [], () => {
   };
 
   const meta = {
-    group: '加密算法',
+    group: "加密算法",
     name: "Double Knife",
     from: "文本",
     to: "加密结果",
