@@ -4,7 +4,6 @@ define("encrypt.Zen", [], () => {
     const transform = (text) => {
         let str = CryptoJS.AES.encrypt(text, key).toString();
 
-        str = str.substring(10);
         str = str.replaceAll("e", "啰");
         str = str.replaceAll("E", "羯");
         str = str.replaceAll("t", "婆");
@@ -75,7 +74,7 @@ define("encrypt.Zen", [], () => {
     }
 
     const transformBack = (text) => {
-        let str = text.substring(4);
+        let str = text;
 
         str = str.replaceAll("啰", "e");
         str = str.replaceAll("羯", "E");
