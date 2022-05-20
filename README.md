@@ -37,3 +37,11 @@ define("encrypt", ["encrypt.mao", "encrypt.doubleKnife", /* yourModuleName */], 
 });
 
 ```
+
+3. 在 `index.html` 中引入你的脚本：
+``` html
+<script src="js/utils.js"></script>
+<!-- to insert here -->
+<script src="js/encrypt/mao.js"></script>
+<script src="js/encrypt/index.js"></script>
+```

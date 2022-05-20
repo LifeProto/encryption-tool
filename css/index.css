@@ -42,6 +42,10 @@ ul {
   height: 100vh;
 }
 
+#sourceSelector {
+  width: 100px;
+}
+
 .sourceSelector {
   margin-left: -120px;
   font-size: 0;
@@ -50,11 +54,13 @@ ul {
 
 .sourceSelector > * {
   margin-left: 0;
+  width: 100px;
 }
 
 .sourceSelector:hover #sourceMenu {
   padding: 1.5rem;
   height: auto;
+  min-width: 400px;
 }
 
 #sourceMenu {
@@ -75,6 +81,7 @@ ul {
 
 #sourceMenu li {
   cursor: pointer;
+  padding: .4rem 1rem;
 }
 
 #sourceMenu li:hover {
@@ -152,7 +159,7 @@ h1:hover .icon {
 }
 
 .toolbar button {
-  width: 120px;
+  width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

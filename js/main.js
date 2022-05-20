@@ -4,13 +4,13 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
     const elStr = menus
       .map((i) => {
         return `<div>
-                  <h5>${i.groupName}</h5>
+                  <h5>${i.group}</h5>
                   <ul>
                     ${i.items
                       .map(
                         ({ meta }) =>
                           '<li data-group="' +
-                          i.groupName +
+                          i.group +
                           '" data-name="' +
                           meta.name +
                           '">' +
@@ -27,7 +27,7 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
     fragment.querySelectorAll("li").forEach((el) =>
       el.addEventListener("click", (e) => {
         const enc = menus
-          ?.find((i) => i.groupName === el.dataset.group)
+          ?.find((i) => i.group === el.dataset.group)
           ?.items.find((i) => i.meta.name === el.dataset.name);
         onClick(enc);
       })
@@ -67,16 +67,16 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
     }${newVal.meta.name}`;
     document.querySelector("#sourceFrom").innerHTML = `${newVal.meta.from}`;
     document.querySelector("#sourceTo").innerHTML = `${newVal.meta.to}`;
-    document.querySelector("#tips").innerHTML = newVal.meta.describe;
+    document.querySelector("#tips").setAttribute('title', newVal.meta.describe);
   });
 
   // to render
   const menuHash = encoders.reduce((acc, i) => {
-    acc[i.groupName ?? "未分组"] = [...(acc[i.groupName ?? "未分组"] ?? []), i];
+    acc[i.meta.group ?? "未分组"] = [...(acc[i.meta.group ?? "未分组"] ?? []), i];
     return acc;
   }, {});
   const menus = Object.entries(menuHash).map(([key, v]) => ({
-    groupName: key,
+    group: key,
     items: v,
   }));
 
