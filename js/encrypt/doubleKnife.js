@@ -142,11 +142,11 @@ define("encrypt.doubleKnife", [], () => {
 
   const meta = {
     group: "加密算法",
-    name: "Double Knife",
+    name: "双刀流加密",
     from: "文本",
     to: "加密结果",
-    emoji: "🔪",
-    describe: "Double knife 算法",
+    emoji: "🔪🔪",
+    describe: "来见识一下双刀流🔪🔪",
     options: [],
   };
 
