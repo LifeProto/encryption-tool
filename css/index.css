@@ -65,7 +65,7 @@ ul {
   left: 0;
   background-color: white;
   box-shadow: 0 0 5px #ccc;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 #sourceMenu ul {
@@ -87,9 +87,9 @@ ul {
 
 h5 {
   font-size: 14px;
-  margin: .5em 0;
+  margin: 0.5em 0;
   position: relative;
-  color: grey; 
+  color: grey;
 }
 
 h5::before {

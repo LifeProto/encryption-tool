@@ -16,14 +16,14 @@ define("utils", [], () => {
     );
   };
   const bindInput = (el, fn) => {
-    let isComp = true 
+    let isComp = true;
 
-    el.addEventListener('compositionstart', () => isComp = false)
-    el.addEventListener('compositionend', (e) => (isComp = true, fn(e)))
-    el.addEventListener('input', e => isComp && fn(e))
-  }
+    el.addEventListener("compositionstart", () => (isComp = false));
+    el.addEventListener("compositionend", (e) => ((isComp = true), fn(e)));
+    el.addEventListener("input", (e) => isComp && fn(e));
+  };
   return {
     useState,
-    bindInput
+    bindInput,
   };
 });

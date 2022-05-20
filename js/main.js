@@ -49,13 +49,15 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
     if (newVal == oldVal) return;
 
     // update attributes
-    const els = Array.from(document.querySelectorAll('#sourceMenu li'))
+    const els = Array.from(document.querySelectorAll("#sourceMenu li"));
     if (oldVal) {
-      els.find(i => i.dataset.name === oldVal.meta.name).setAttribute('class', '')
+      els
+        .find((i) => i.dataset.name === oldVal.meta.name)
+        .setAttribute("class", "");
     }
-    els.find(i => i.dataset.name === newVal.meta.name).setAttribute('class', 'active')
-
-
+    els
+      .find((i) => i.dataset.name === newVal.meta.name)
+      .setAttribute("class", "active");
 
     // update text
     document.querySelector("#sourceSelector").innerHTML = `${
@@ -65,7 +67,7 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
     }${newVal.meta.name}`;
     document.querySelector("#sourceFrom").innerHTML = `${newVal.meta.from}`;
     document.querySelector("#sourceTo").innerHTML = `${newVal.meta.to}`;
-    document.querySelector('#tips').innerHTML = newVal.meta.describe;
+    document.querySelector("#tips").innerHTML = newVal.meta.describe;
   });
 
   // to render
@@ -84,16 +86,15 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
 
   const inputFromEl = document.getElementById("inputFrom");
   const inputToEl = document.getElementById("inputTo");
-  
-  bindInput(inputFromEl, e => {
-    console.log('a', e.target.value)
-    inputToEl.value = curEncoder.value.transform(e.target.value)
-  })
-  bindInput(inputToEl, e => {
-    inputFromEl.value = curEncoder.value.transformBack(e.target.value)
-  })
+
+  bindInput(inputFromEl, (e) => {
+    console.log("a", e.target.value);
+    inputToEl.value = curEncoder.value.transform(e.target.value);
+  });
+  bindInput(inputToEl, (e) => {
+    inputFromEl.value = curEncoder.value.transformBack(e.target.value);
+  });
 
   // set default encoder
-  curEncoder.value = encoders[0]
- 
+  curEncoder.value = encoders[0];
 });
