@@ -130,6 +130,7 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
       if (queryHistory.value.length > 100) {
         queryHistory.pop();
       }
+      if (queryHistory.value[0]?.fromText === inputFromEl.value) return;
       queryHistory.value = [
         {
           fromText: inputFromEl.value,
@@ -146,6 +147,7 @@ define("_", ["utils", "encrypt"], ({ useState, bindInput }, encoders) => {
       if (queryHistory.value.length > 100) {
         queryHistory.pop();
       }
+      if (queryHistory.value[0]?.fromText === inputFromEl.value) return;
       queryHistory.value = [
         {
           fromText: inputFromEl.value,
